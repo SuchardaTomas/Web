@@ -15,7 +15,7 @@ const app = express();
 const mongoose = require("mongoose");
 mongoose
   .connect(
-    "mongodb+srv://admin:adminadmin@cluster0.hsbrndg.mongodb.net/pripravamat?retryWrites=true&w=majority"
+    "mongodb+srv://admin:adminadmin@cluster0.jrm5apl.mongodb.net/"
   )
   .then(() => console.log("Connected to Mongodb"))
   .catch(() => console.log(err));
@@ -33,7 +33,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/books', booksRouter);
-app.use('/uploads', uploadsController);
 
 app.use(function (req, res, next) {
   next(createError(404));

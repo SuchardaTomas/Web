@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
+var express = require("express");
+var router = express.Router();
 
-const bookController = require("../controllers/books");
+const controller = require("../Controllers/books");
 
-router.get('/', bookController.getAllBooks);
-router.get('/:id', bookController.getBookById);
-router.post('/', bookController.postBook);
-router.put('/:id', bookController.putBook);
-router.delete('/:id', bookController.deleteBook);
+router.get("/", controller.getAllBooks);
+router.get("/:id", controller.getBookById);
+router.delete("/:id", controller.deleteBook);
+router.put("/:id", controller.updateBook);
+router.post("/", controller.createBook);
 
 module.exports = router;
