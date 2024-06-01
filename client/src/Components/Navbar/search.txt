@@ -1,19 +1,4 @@
-import { useEffect } from "react";
-import "./navbar.css";
-
-export default function Navbar() {
-  useEffect(() => {
-    let burger = document.querySelector(".burger");
-    let menu = document.querySelector("#" + burger.dataset.target);
-    burger.addEventListener("click", function () {
-      burger.classList.toggle("is-active");
-      menu.classList.toggle("is-active");
-    });
-  });
-
-  return (
-    <>
-      <nav className="navbar">
+<nav className="navbar">
         <div className="navbar-brand">
           <div
             className="navbar-burger burger"
@@ -70,6 +55,3 @@ export default function Navbar() {
           </div>
         </div>
       </nav>
-    </>
-  );
-}

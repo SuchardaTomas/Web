@@ -12,6 +12,14 @@ const uploadsController = require('./routes/books');
 
 const app = express();
 
+const mongoose = require("mongoose");
+mongoose
+  .connect(
+    "mongodb+srv://admin:adminadmin@cluster0.hsbrndg.mongodb.net/pripravamat?retryWrites=true&w=majority"
+  )
+  .then(() => console.log("Connected to Mongodb"))
+  .catch(() => console.log(err));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

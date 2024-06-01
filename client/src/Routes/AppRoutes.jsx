@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // pages
 import MainPage from "../pages/Home/MainPage";
 import BookCreateForm from "../pages/BookCreateForm/BookCreateForm";
-import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import ErrorPage from "../pages/Error/ErrorPage";
 
 // components
 import Navbar from "../Components/Navbar/Navbar";
