@@ -8,7 +8,6 @@ const PORT = 3000;
 
 const indexRouter = require('./routes/index');
 const booksRouter = require('./routes/books');
-const uploadsController = require('./routes/books');
 
 const app = express();
 
@@ -32,7 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/books', booksRouter);
+app.use('/book', booksRouter);
 
 app.use(function (req, res, next) {
   next(createError(404));

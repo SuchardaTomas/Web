@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-const controller = require("../Controllers/books");
+const controller = require("../controllers/books");
 
 router.get("/", controller.getAllBooks);
 router.get("/:id", controller.getBookById);

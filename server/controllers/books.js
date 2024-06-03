@@ -1,89 +1,71 @@
-const Book = require("../models/books");
+const db = require("../helpers/db");
 
-exports.getAllBooks = async (req, res) => {
-  try {
-    const result = await Book.find();
-    if (result && result.length !== 0) {
-      return res.status(200).send({
-        msg: "Books found!",
-        payload: result,
-      });
-    }
-    res.status(404).send({ msg: "Books not found" });
-  } catch (error) {
-    res.status(500).send(error);
-  }
-};
-
-exports.getBookById = async (req, res) => {
-  try {
-    const result = await Book.findById(req.params.id);
-    if (result) {
-      return res.status(200).send({
-        msg: "Book found",
-        payload: result,
-      });
-    }
-    res.status(404).send({ msg: "Book not found" });
-  } catch (error) {
-    res.status(500).send(error);
-  }
-};
-
-exports.deleteBook = async (req, res) => {
-  try {
-    const result = await Book.findByIdAndDelete(req.params.id);
-    if (result) {
-      return res.status(200).send({
-        msg: "Book deleted",
-      });
-    }
-    res.status(500).send({ msg: "Something went wrong" });
-  } catch (error) {
-    res.status(500).send(error);
-  }
-};
-
-exports.updateBook = async (req, res) => {
-  try {
-    const data = {
-      name: req.body.name,
-      author: req.body.author,
-      pages: req.body.pages,
-    };
-    const result = await Book.findByIdAndUpdate(req.params.id, data);
-    if (result) {
-      return res.status(200).send({
-        msg: "Book updated",
-        payload: result,
-      });
-    }
-    res.status(500).send({
-      msg: "Book was not updated",
+exports.getAllBooks = (req, res) => {
+    db.query("SELECT * FROM books;", (err, result, fields) => {
+        if (err) return console.log(err);
+        res.status(200).send({
+            msg: "Books found",
+            result,
+        });
     });
-  } catch (error) {
-    res.status(500).send(error);
-  }
 };
 
-exports.createBook = async (req, res) => {
-  try {
-    const data = new Book({
-      name: req.body.name,
-      author: req.body.author,
-      pages: req.body.pages,
-    });
-    const result = await data.save();
-    if (result) {
-      return res.status(201).send({
-        msg: "Book created",
-        payload: result,
-      });
-    }
-    res.status(500).send({
-      msg: "Book was not created",
-    });
-  } catch (error) {
-    res.status(500).send(error);
-  }
+exports.getBookById = (req, res) => {
+    db.query(
+        "SELECT * FROM books WHERE id = ?;",
+        [req.params.id],
+        (err, result, fields) => {
+            if (err) return console.log(err);
+            res.status(200).send({
+                msg: "Book found",
+                result,
+            });
+        }
+    );
 };
+
+exports.createBook = (req, res) => {
+    db.query(
+      "INSERT INTO books (name, author, pages) VALUES (?, ?, ?);",
+      [req.body.name, req.body.author, req.body.pages],
+      (err, result, fields) => {
+        if (err) return console.log(err);
+        res.status(200).send({
+          msg: "Book created",
+          result,
+        });
+      }
+    );
+  };
+  
+  exports.updateBook = (req, res) => {
+    db.query(
+      "UPDATE books SET name = ?, author = ?, pages = ? WHERE id = ?;",
+      [req.body.name, req.body.author, req.body.pages],
+      (err, result, fields) => {
+        if (err) return console.log(err);
+        res.status(200).send({
+          msg: "Book updated",
+          result,
+        });
+      }
+    );
+  };
+  
+  exports.deleteBook = (req, res) => {
+    db.query(
+      "DELETE FROM books WHERE id = ?;",
+      [req.params.id],
+      (err, result, fields) => {
+        if (err) return console.log(err);
+        res.status(200).send({
+          msg: "Book deleted",
+          result,
+        });
+      }
+    );
+  };
+
+
+
+

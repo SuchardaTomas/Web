@@ -10,7 +10,7 @@ export default function MainPage() {
             <div className="container has-text-centered">
               <h2 className="title text-7xl text-white">Nakama Books</h2>
               <h1 className="subtitle profession p-1.5 text-white pt-12 uppercase">
-                Vaše destinace pro všechny manga milovníky
+                Destinace pro všechny manga milovníky
               </h1>
             </div>
           </div>
