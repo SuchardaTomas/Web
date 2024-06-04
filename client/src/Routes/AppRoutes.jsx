@@ -19,7 +19,8 @@ export default function AppRoutes() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/knížky" element={<Products />} />
-          <Route path="/knížky/:id" element={<Book />}/>
+          <Route path="/knížky/:name/:id" element={<Book />}/>
+
           <Route path="/login" element={<Login />}/>
           
           <Route path="/*" element={<ErrorPage />} />

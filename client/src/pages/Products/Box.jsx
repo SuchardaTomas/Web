@@ -7,7 +7,7 @@ export default function Book(props) {
         <form method="post">
           <div className="card shadow">
             <div>
-              <Link to={`/knížky/${props.id}`}>
+              <Link to={`/knížky/${props.name}/${props.id}`}>
                 <img
                   src="https://media.libris.to/jacket/42999443_chainsaw-man-vol-13.jpg"
                   alt="Image"

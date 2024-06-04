@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function Book() {
-  const { id } = useParams();
+  const { id, name } = useParams();
   const [book, setBook] = useState({});
   const [loaded, setLoaded] = useState(false);
 
   const getBook = async () => {
-    const res = await fetch(`http://localhost:3000/book/${id}`, {
+    const res = await fetch(`http://localhost:3000/book/${name}/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -47,9 +47,7 @@ export default function Book() {
               </div>
               <div className="column is-6 is-offset-1">
                 <h1 className="title is-2">{book.result[0].name}</h1>
-                <h2 className="subtitle is-4">
-                {book.result[0].author}
-                </h2>
+                <h2 className="subtitle is-4">{book.result[0].author}</h2>
                 <br />
                 <button
                   type="submit"
