@@ -8,6 +8,7 @@ import Book from "../pages/Products/Book";
 
 // components
 import Navbar from "../Components/Navbar/Navbar";
+import { Login } from "../pages/auth/Login";
 
 export default function AppRoutes() {
   return (
@@ -18,7 +19,8 @@ export default function AppRoutes() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/knížky" element={<Products />} />
-          <Route path="/knížky/:name" element={<Book />}/>
+          <Route path="/knížky/:id" element={<Book />}/>
+          <Route path="/login" element={<Login />}/>
           
           <Route path="/*" element={<ErrorPage />} />
         </Routes>

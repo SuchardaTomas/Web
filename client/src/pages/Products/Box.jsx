@@ -7,9 +7,9 @@ export default function Book(props) {
         <form method="post">
           <div className="card shadow">
             <div>
-              <Link to={`/knížky/${props.name}`}>
+              <Link to={`/knížky/${props.id}`}>
                 <img
-                  src=""
+                  src="https://media.libris.to/jacket/42999443_chainsaw-man-vol-13.jpg"
                   alt="Image"
                   className="img-fluid card-img-top"
                 />
@@ -28,8 +28,12 @@ export default function Book(props) {
                 <span className="price"> Kč</span>
               </h5>
               <br />
-              <button type="submit" className="btn btn-warning my-3" name="add">
-                Koupit <i className="fas fa-shopping-cart" />
+              <button
+                type="submit"
+                className="btn btn-warning my-3 btn-lg"
+                name="add"
+              >
+                Koupit
               </button>
             </div>
           </div>
