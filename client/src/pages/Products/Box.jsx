@@ -16,8 +16,7 @@ export default function Book(props) {
               </Link>
             </div>
             <div className="card-body">
-              <h5 className="card-title font-weight-bold">{props.name}</h5>
-              <h5 className="card-title font-weight-bold">{props.id}</h5>
+              <h5 className="card-title font-weight-bold is-size-5">{props.name}</h5>
               <br />
 
               <p className="card-text">

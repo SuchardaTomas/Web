@@ -35,7 +35,7 @@ export default function Book() {
     <>
       <section className="is-fullheight is-default is-bold">
         <div className="hero-body">
-          <div className="container has-text-centered">
+          <div className="container">
             <div className="columns is-vcentered">
               <div className="column is-4">
                 <figure className="image is-2by3">

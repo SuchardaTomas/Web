@@ -27,7 +27,7 @@ exports.getBookById = (req, res) => {
 exports.getBookByNameAndId = (req, res) => {
   db.query(
     "SELECT * FROM books WHERE name = ? AND id = ?",
-    [req.params.id, req.params.name],
+    [req.params.name, req.params.id],
     (err, result, fields) => {
       if (err) return console.log(err);
       res.status(200).send({
