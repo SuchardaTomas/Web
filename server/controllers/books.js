@@ -52,7 +52,7 @@ exports.getBookByName = (req, res) => {
   );
 }
 
-exports.createBook = upload.single("image"), (req, res) => {
+exports.createBook = (req, res) => {
   db.query(
     "INSERT INTO books (name, author, pages) VALUES (?, ?, ?);",
     [req.body.name, req.body.author, req.body.pages],
