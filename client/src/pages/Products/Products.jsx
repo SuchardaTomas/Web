@@ -4,6 +4,11 @@ import { useState, useEffect } from "react";
 export default function Products() {
   const [books, setBooks] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [visible, setVisible] = useState(4);
+
+  const showMoreBooks = () => {
+    setVisible(visible + 4);
+  };
 
   const getBooks = async () => {
     const res = await fetch("http://localhost:3000/book", {
@@ -33,10 +38,19 @@ export default function Products() {
     <>
       <div className="container">
         <div className="row text-center py-6">
-          {books.result.map((book) => (
-            <Box id={book.id} name={book.name} author={book.author} pages={book.pages} />
+          {books.result.slice(0, visible).map((book) => (
+            <Box
+              id={book.id}
+              name={book.name}
+              author={book.author}
+              pages={book.pages}
+              image={book.image}
+            />
           ))}
         </div>
+        <button className="button is-medium" onClick={showMoreBooks}>
+          Další
+        </button>
       </div>
     </>
   );

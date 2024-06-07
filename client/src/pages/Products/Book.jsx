@@ -40,7 +40,7 @@ export default function Book() {
               <div className="column is-4">
                 <figure className="image is-2by3">
                   <img
-                    src="https://media.libris.to/jacket/42999443_chainsaw-man-vol-13.jpg"
+                    src={book.result[0].image}
                     alt="Description"
                   />
                 </figure>

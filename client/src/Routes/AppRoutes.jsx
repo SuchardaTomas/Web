@@ -6,9 +6,12 @@ import ErrorPage from "../pages/Error/ErrorPage";
 import Products from "../pages/Products/Products";
 import Book from "../pages/Products/Book";
 
+import CreateBook from "../pages/Admin/CreateBook";
+import UpdateBook from "../pages/Admin/UpdateBook";
+
 // components
 import Navbar from "../Components/Navbar/Navbar";
-import { Login } from "../pages/auth/Login";
+import MainPageAdmin from "../pages/Admin/MainPageAdmin";
 
 export default function AppRoutes() {
   return (
@@ -21,8 +24,11 @@ export default function AppRoutes() {
           <Route path="/knížky" element={<Products />} />
           <Route path="/knížky/:name/:id" element={<Book />}/>
 
-          <Route path="/login" element={<Login />}/>
-          
+          <Route path="/admin" element={<MainPageAdmin />}/>
+          <Route path="/admin/createbook" element={<CreateBook />} />
+          <Route path="/admin/updatebook" element={<UpdateBook />}/>
+
+
           <Route path="/*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

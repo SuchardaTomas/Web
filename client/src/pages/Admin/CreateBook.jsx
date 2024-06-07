@@ -4,7 +4,7 @@ export default function CreateBook() {
   const [formData, setFormData] = useState({});
   const [success, setSuccess] = useState(false);
 
-  const createUser = async () => {
+  const createBook = async () => {
     const res = await fetch("http://localhost:3000/book", {
       method: "POST",
       headers: {
@@ -13,7 +13,7 @@ export default function CreateBook() {
       body: JSON.stringify(formData),
     });
     const data = await res.json();
-    if (data.msg == "User created") {
+    if (data.msg == "Book created") {
       setSuccess(true);
     } else {
       setSuccess(false);
@@ -26,48 +26,62 @@ export default function CreateBook() {
 
   const handlePost = (e) => {
     e.preventDefault();
-    createUser();
+    createBook();
   };
 
   return (
     <>
       <form className="form">
         <div className="field">
-          <label className="label">Jméno</label>
+          <label className="label">Název</label>
           <div className="control">
             <input
               required
               name="name"
               className="input"
               type="text"
-              placeholder="Jméno"
+              placeholder="Název"
               onChange={(e) => handleChange(e)}
             />
           </div>
         </div>
 
         <div className="field">
-          <label className="label">Věk</label>
+          <label className="label">Autor</label>
           <div className="control">
             <input
               required
-              name="age"
+              name="author"
               className="input"
-              type="number"
-              placeholder="Věk"
+              type="text"
+              placeholder="Autor"
               onChange={(e) => handleChange(e)}
             />
           </div>
         </div>
 
         <div className="field">
-          <label className="label">Obrázek (url)</label>
+          <label className="label">Počet stránek</label>
+          <div className="control">
+            <input
+              required
+              name="pages"
+              className="input"
+              type="number"
+              placeholder="Počet stránek"
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label">Obrázek</label>
           <div className="control">
             <input
               required
               name="image"
               className="input"
-              type="text"
+              type="file"
               placeholder="Obrázek"
               onChange={(e) => handleChange(e)}
             />

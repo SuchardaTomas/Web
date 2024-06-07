@@ -1,7 +1,10 @@
 const db = require("../helpers/db");
+const imageController = require("../controllers/image");
+
+const uploadFile = imageController.upload.single("imgFile");
 
 exports.getAllBooks = (req, res) => {
-  db.query("SELECT * FROM books;", (err, result, fields) => {
+  db.query("SELECT * FROM books ORDER BY id DESC;", (err, result, fields) => {
     if (err) return console.log(err);
     res.status(200).send({
       msg: "Books found",

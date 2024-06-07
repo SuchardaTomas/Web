@@ -9,7 +9,7 @@ export default function Book(props) {
             <div>
               <Link to={`/knížky/${props.name}/${props.id}`}>
                 <img
-                  src="https://media.libris.to/jacket/42999443_chainsaw-man-vol-13.jpg"
+                  src={props.image}
                   alt="Image"
                   className="img-fluid card-img-top"
                 />
