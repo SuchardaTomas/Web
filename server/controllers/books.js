@@ -1,7 +1,4 @@
 const db = require("../helpers/db");
-const imageController = require("../controllers/image");
-
-const uploadFile = imageController.upload.single("imgFile");
 
 exports.getAllBooks = (req, res) => {
   db.query("SELECT * FROM books ORDER BY id DESC;", (err, result, fields) => {
@@ -55,7 +52,7 @@ exports.getBookByName = (req, res) => {
   );
 }
 
-exports.createBook = (req, res) => {
+exports.createBook = upload.single("image"), (req, res) => {
   db.query(
     "INSERT INTO books (name, author, pages) VALUES (?, ?, ?);",
     [req.body.name, req.body.author, req.body.pages],
@@ -96,7 +93,3 @@ exports.deleteBook = (req, res) => {
     }
   );
 };
-
-
-
-

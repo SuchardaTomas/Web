@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { updateBook } from "../../../../server/controllers/books";
 
 export default function UpdateBook() {
   const { id } = useParams();
-  const [user, setUser] = useState({});
+  const [book, setBook] = useState({});
   const [formData, setFormData] = useState({});
   const [success, setSuccess] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
-  const getUser = async () => {
+  const getBook = async () => {
     const res = await fetch(`http://localhost:3000/book/${id}`, {
       headers: {
         Accept: "application/json",
@@ -17,16 +18,16 @@ export default function UpdateBook() {
       method: "GET",
     });
     const data = await res.json();
-    setUser(data);
+    setBook(data);
     setLoaded(true);
   };
 
   useEffect(() => {
-    getUser();
-    console.log(user);
+    getBook();
+    console.log(book);
   }, []);
 
-  const updateUser = async () => {
+  const UpdateBook = async () => {
     const res = await fetch(`http://localhost:3000/book/${id}`, {
       method: "PUT",
       headers: {
@@ -35,7 +36,7 @@ export default function UpdateBook() {
       body: JSON.stringify(formData),
     });
     const data = await res.json();
-    if (data.msg == "User created") {
+    if (data.msg == "Book created") {
       setSuccess(true);
     } else {
       setSuccess(false);
@@ -48,13 +49,13 @@ export default function UpdateBook() {
 
   const handlePost = (e) => {
     e.preventDefault();
-    updateUser();
+    updateBook();
   };
 
   if (!loaded) {
     return (
       <>
-        <p>Loading user...</p>
+        <p>Loading book...</p>
       </>
     );
   }
@@ -69,7 +70,7 @@ export default function UpdateBook() {
               name="name"
               className="input"
               type="text"
-              placeholder={user.result[0].name}
+              placeholder={book.result[0].name}
               onChange={(e) => handleChange(e)}
             />
           </div>
@@ -83,7 +84,7 @@ export default function UpdateBook() {
               name="age"
               className="input"
               type="number"
-              placeholder={user.result[0].age}
+              placeholder={book.result[0].age}
               onChange={(e) => handleChange(e)}
             />
           </div>

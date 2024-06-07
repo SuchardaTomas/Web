@@ -73,21 +73,7 @@ export default function CreateBook() {
             />
           </div>
         </div>
-
-        <div className="field">
-          <label className="label">Obrázek</label>
-          <div className="control">
-            <input
-              required
-              name="image"
-              className="input"
-              type="file"
-              placeholder="Obrázek"
-              onChange={(e) => handleChange(e)}
-            />
-          </div>
-        </div>
-
+        
         {success ? <p className="has-text-success">Úspěch!</p> : ""}
 
         <button className="button" onClick={handlePost}>
