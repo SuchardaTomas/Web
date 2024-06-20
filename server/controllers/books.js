@@ -1,13 +1,14 @@
 const db = require("../helpers/db");
 
 exports.getAllBooks = (req, res) => {
-  db.query("SELECT * FROM books ORDER BY id DESC;", (err, result, fields) => {
-    if (err) return console.log(err);
-    res.status(200).send({
-      msg: "Books found",
-      result,
+  db.query("SELECT * FROM books ORDER BY id DESC;",
+    (err, result, fields) => {
+      if (err) return console.log(err);
+      res.status(200).send({
+        msg: "Books found",
+        result,
+      });
     });
-  });
 };
 
 exports.getBookById = (req, res) => {
@@ -54,8 +55,8 @@ exports.getBookByName = (req, res) => {
 
 exports.createBook = (req, res) => {
   db.query(
-    "INSERT INTO books (name, author, pages) VALUES (?, ?, ?);",
-    [req.body.name, req.body.author, req.body.pages],
+    "INSERT INTO books (name, author, pages, image) VALUES (?, ?, ?, ?);",
+    [req.body.name, req.body.author, req.body.page, req.body.image],
     (err, result, fields) => {
       if (err) return console.log(err);
       res.status(200).send({
@@ -68,7 +69,7 @@ exports.createBook = (req, res) => {
 
 exports.updateBook = (req, res) => {
   db.query(
-    "UPDATE books SET name = ?, author = ?, pages = ? WHERE id = ?;",
+    "UPDATE books SET name = ?, author = ?, pages = ?, image = ? WHERE id = ?;",
     [req.body.name, req.body.author, req.body.pages],
     (err, result, fields) => {
       if (err) return console.log(err);

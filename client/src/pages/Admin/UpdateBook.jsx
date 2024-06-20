@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { updateBook } from "../../../../server/controllers/books";
 
 export default function UpdateBook() {
   const { id } = useParams();
