@@ -54,12 +54,6 @@ export default function MainPage() {
                   prostřednictvím vizuálních příběhů.
                 </p>
                 <br />
-                <p>
-                  Děkujeme vám za vaši podporu a doufáme, že se staneme vaší
-                  oblíbenou destinací pro nákupy mang. Sledujte nás na
-                  sociálních sítích a zůstaňte v obraze s našimi nejnovějšími
-                  přírůstky do vaší kolekce.
-                </p>
                 <br />
                 <div className="is-divider" />
               </div>

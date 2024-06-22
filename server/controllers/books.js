@@ -1,7 +1,7 @@
 const db = require("../helpers/db");
 
 exports.getAllBooks = (req, res) => {
-  db.query("SELECT * FROM books ORDER BY id DESC;",
+  db.query("SELECT * FROM books ORDER BY RAND();",
     (err, result, fields) => {
       if (err) return console.log(err);
       res.status(200).send({

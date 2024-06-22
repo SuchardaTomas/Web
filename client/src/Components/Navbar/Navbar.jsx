@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { NavbarData } from "./NavbarData";
 
 export default function Navbar() {
   useEffect(() => {
@@ -26,15 +27,11 @@ export default function Navbar() {
         </div>
         <div id="navbarExampleTransparentExample" className="navbar-menu">
           <div className="navbar-start is-flex">
-            <Link className="navbar-item" to={`/`}>
-              <p>Domů</p>
-            </Link>
-            <Link className="navbar-item" to={`/knížky`}>
-              <p>Knížky</p>
-            </Link>
-            <a className="navbar-item" href="https://bulma.io/">
-              Kontakty
-            </a>
+            {NavbarData.map((navbar) => (
+              <Link to={navbar.path} className={navbar.className}>
+                <p>{navbar.title}</p>
+              </Link>
+            ))}
           </div>
           <div className="navbar-end is-flex">
             <div className="navbar-item">
