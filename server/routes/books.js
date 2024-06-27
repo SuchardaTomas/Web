@@ -5,7 +5,7 @@ const controller = require("../controllers/books");
 
 router.get("/", controller.getAllBooks);
 router.get("/:id", controller.getBookById);
-router.get("/:name", controller.getBookByName);
+router.get("/:name", controller.getBooksByName);
 router.get("/:name/:id", controller.getBookByNameAndId);
 
 router.delete("/:id", controller.deleteBook);

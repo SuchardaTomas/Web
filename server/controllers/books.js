@@ -39,10 +39,11 @@ exports.getBookByNameAndId = (req, res) => {
   );
 }
 
-exports.getBookByName = (req, res) => {
+exports.getBooksByName = (req, res) => {
+  const searchString = "%" + req.params.name + "%";
   db.query(
-    "SELECT * FROM books WHERE name = ?",
-    [req.params.name],
+    "SELECT * FROM books WHERE name LIKE ?",
+    [searchString],
     (err, result, fields) => {
       if (err) return console.log(err);
       res.status(200).send({

@@ -1,9 +1,11 @@
 const mysql = require('mysql');
+require('dotenv').config();
+
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
   password: '',
-  database: 'nakamabooks'
+  database: process.env.DATABASE_NAME
 });
 
 connection.connect((err) => {

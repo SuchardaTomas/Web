@@ -4,7 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
-const PORT = 3000;
+
+require('dotenv').config();
 
 const indexRouter = require('./routes/index');
 const booksRouter = require('./routes/books');
@@ -14,7 +15,7 @@ const app = express();
 const mongoose = require("mongoose");
 mongoose
   .connect(
-    "mongodb+srv://admin:adminadmin@cluster0.jrm5apl.mongodb.net/"
+    process.env.DATABASE_LINK
   )
   .then(() => console.log("Connected to Mongodb"))
   .catch(() => console.log(err));
