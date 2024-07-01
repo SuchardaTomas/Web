@@ -18,7 +18,7 @@ export default function ContactUs() {
       )
       .then(
         (result) => {
-          toast.info('Zpráva byla odeslána', {
+          toast.success('Zpráva byla odeslána', {
             position: "bottom-right",
             autoClose: 2000,
             hideProgressBar: false,
@@ -31,7 +31,17 @@ export default function ContactUs() {
             });
         },
         (error) => {
-          window.alert("Zpráva se neodeslala");
+          toast.error('Zpráva se neodeslala', {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+            });
           console.log(error.text);
         }
       );
