@@ -1,5 +1,7 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ContactUs() {
   const form = useRef();
@@ -16,7 +18,17 @@ export default function ContactUs() {
       )
       .then(
         (result) => {
-          window.alert("Zpráva byla odeslána");
+          toast.info('Zpráva byla odeslána', {
+            position: "bottom-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+            });
         },
         (error) => {
           window.alert("Zpráva se neodeslala");
@@ -85,6 +97,7 @@ export default function ContactUs() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   );
 }
