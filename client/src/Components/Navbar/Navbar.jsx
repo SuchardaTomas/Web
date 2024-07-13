@@ -1,51 +1,79 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { NavbarData } from "./NavbarData";
 
 export default function Navbar() {
-  useEffect(() => {
-    let burger = document.querySelector(".burger");
-    let menu = document.querySelector("#" + burger.dataset.target);
-    burger.addEventListener("click", function () {
-      burger.classList.toggle("is-active");
-      menu.classList.toggle("is-active");
-    });
-  });
+  const [query, setQuery] = useState("");
+  const [isActive, setIsActive] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (query.trim()) {
+      navigate(`/search?q=${query}`);
+    }
+  };
+
+  const toggleMenu = () => {
+    setIsActive(!isActive);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSearch(e);
+    }
+  };
 
   return (
     <>
       <nav className="navbar">
         <div className="navbar-brand">
           <div
-            className="navbar-burger burger"
+            className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
             data-target="navbarExampleTransparentExample"
+            onClick={toggleMenu}
           >
             <span />
             <span />
             <span />
           </div>
         </div>
-        <div id="navbarExampleTransparentExample" className="navbar-menu">
+        <div
+          id="navbarExampleTransparentExample"
+          className={`navbar-menu ${isActive ? "is-active" : ""}`}
+        >
           <div className="navbar-start is-flex">
             {NavbarData.map((navbar) => (
-              <Link to={navbar.path} className={navbar.className}>
+              <Link
+                key={navbar.path}
+                to={navbar.path}
+                className={navbar.className}
+              >
                 <p>{navbar.title}</p>
               </Link>
             ))}
           </div>
+
           <div className="navbar-end is-flex">
             <div className="navbar-item">
               <div className="field has-addons">
                 <div className="control">
                   <input
                     className="input"
-                    type="search"
-                    placeholder="Search"
+                    type="text"
+                    placeholder="Zadejte název knihy"
                     aria-label="Search"
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    onKeyDown={handleKeyDown} 
                   />
                 </div>
                 <div className="control">
-                  <button className="button" type="submit">
+                  <button
+                    className="button"
+                    type="submit"
+                    onClick={handleSearch}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

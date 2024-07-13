@@ -40,19 +40,20 @@ exports.getBookByNameAndId = (req, res) => {
 }
 
 exports.getBooksByName = (req, res) => {
-  const searchString = "%" + req.params.name + "%";
+  const searchString = `%${req.query.name}%`; // Získání hledaného názvu knihy
   db.query(
     "SELECT * FROM books WHERE name LIKE ?",
     [searchString],
     (err, result, fields) => {
-      if (err) return console.log(err);
-      res.status(200).send({
-        msg: "Book found",
-        result,
-      });
+      if (err) {
+        console.error("Error retrieving books:", err);
+        res.status(500).send({ error: "Error retrieving books" });
+        return;
+      }
+      res.status(200).send({ msg: "Books found", result });
     }
   );
-}
+};
 
 exports.createBook = (req, res) => {
   db.query(

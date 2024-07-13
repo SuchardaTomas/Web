@@ -1,0 +1,13 @@
+<div className="container">
+        <div className="row text-center py-6">
+          {books.result.slice(0, visible).map((book) => (
+            <Box
+              id={book.id}
+              name={book.name}
+              author={book.author}
+              pages={book.pages}
+              image={book.image}
+            />
+          ))}
+        </div>
+      </div>
