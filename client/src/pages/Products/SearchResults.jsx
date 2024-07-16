@@ -11,13 +11,16 @@ export default function SearchResults() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/book/search/name?name=${query}`, {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          method: "GET",
-        });
+        const res = await fetch(
+          `http://localhost:3000/book/search/name?name=${query}`,
+          {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            method: "GET",
+          }
+        );
         const data = await res.json();
         setBooks(data.result);
         setLoaded(true);
