@@ -11,7 +11,7 @@ export default function SearchResults() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/book?name=${query}`, {
+        const res = await fetch(`http://localhost:3000/book/search/name?name=${query}`, {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -42,14 +42,13 @@ export default function SearchResults() {
           {books.length === 0 ? (
             <p>No books found.</p>
           ) : (
-            books.map((book) => (
+            books.map((result) => (
               <Box
-                key={book.id} // Důležité je přidat key prop při mapování komponenty Box
-                id={book.id}
-                name={book.name}
-                author={book.author}
-                pages={book.pages}
-                image={book.image}
+                id={result.id}
+                name={result.name}
+                author={result.author}
+                pages={result.pages}
+                image={result.image}
               />
             ))
           )}
