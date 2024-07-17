@@ -48,9 +48,11 @@ export default function Products() {
             />
           ))}
         </div>
-        <button className="button is-medium" onClick={showMoreBooks}>
-          Další
-        </button>
+        {visible < books.result.length && (
+          <button className="button is-medium" onClick={showMoreBooks}>
+            Další
+          </button>
+        )}
       </div>
     </>
   );

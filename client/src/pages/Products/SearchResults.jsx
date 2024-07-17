@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Box from "./Box";
+import NotFound from "./NotFound.png"
 
 export default function SearchResults() {
   const [books, setBooks] = useState([]);
@@ -43,7 +44,10 @@ export default function SearchResults() {
       <div className="container">
         <div className="row text-center py-6">
           {books.length === 0 ? (
-            <p>No books found.</p>
+            <div className="container flex justify-center flex-col items-center">
+              <img src={NotFound} alt="No books found" />
+              <p className="text-2xl">Žádnou takovou knihu jsme nenašli</p>
+            </div>
           ) : (
             books.map((result) => (
               <Box
