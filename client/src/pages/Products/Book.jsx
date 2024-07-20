@@ -39,10 +39,7 @@ export default function Book() {
             <div className="columns is-vcentered">
               <div className="column is-4">
                 <figure className="image is-2by3">
-                  <img
-                    src={book.result[0].image}
-                    alt="Description"
-                  />
+                  <img src={book.result[0].image} alt="Description" />
                 </figure>
               </div>
               <div className="column is-6 is-offset-1">
