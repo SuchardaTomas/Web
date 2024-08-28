@@ -7,7 +7,7 @@ import { NavbarData } from "./NavbarData";
 export default function Navbar() {
   const [query, setQuery] = useState("");
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-  const [cartItemCount, setCartItemCount] = useState(3); // počet produktů v košíku
+  const [cartItemCount, setCartItemCount] = useState(0); // počet produktů v košíku
 
   const handleSearch = (e) => {
     e.preventDefault();
