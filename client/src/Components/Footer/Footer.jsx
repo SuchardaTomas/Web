@@ -79,11 +79,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* Spodní část patičky */}
-      <div className="mt-10 border-t border-gray-800 pt-6 text-center">
-        <p className="text-gray-400">Vyrobeno s ❤️ v České republice.</p>
-      </div>
     </footer>
     </>
   );
