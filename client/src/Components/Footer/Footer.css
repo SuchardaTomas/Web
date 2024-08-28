@@ -1,0 +1,13 @@
+.footer a {
+    padding: 0rem 1rem 1rem 1rem;
+    color: lightgrey;
+  }
+  
+  .footer a i {
+    font-size: 1.5rem;
+    padding: 0px 10px;
+  }
+  
+  .footer a .nav-item {
+    color: whitesmoke;
+  }
