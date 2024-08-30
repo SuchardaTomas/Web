@@ -34,7 +34,7 @@ export default function AppRoutes() {
           <Route path="/admin/createbook" element={<CreateBook />} />
           <Route path="/admin/updatebook" element={<UpdateBook />}/>
 
-          <Route path="/*" element={<ErrorPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
