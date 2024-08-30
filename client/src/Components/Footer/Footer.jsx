@@ -1,17 +1,17 @@
 export default function Footer() {
   return (
     <>
-      <footer className="bg-gray-900 text-white py-10 mt-auto">
+      <footer className="bg-gray-800 text-white py-10 mt-auto">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo a kontaktní informace */}
         <div>
           <img src="/logo.png" alt="Logo" className="mb-4" />
           <p className="text-gray-400">
-            © 2024 Název společnosti, všechna práva vyhrazena.
+            © 2024 Nakamabooks.cz, všechna práva vyhrazena.
           </p>
-          <p className="mt-2">Adresa společnosti</p>
-          <p>Telefon: +420 123 456 789</p>
-          <p>E-mail: info@spolecnost.cz</p>
+          <p className="mt-2">Adresa: Horní dolní 1148</p>
+          <p>Telefon: +420 111 111 111</p>
+          <p>E-mail: info@nakamabooks.cz</p>
         </div>
 
         {/* Odkazy na důležité stránky */}
@@ -22,7 +22,6 @@ export default function Footer() {
             <li><a href="/terms" className="hover:underline">Podmínky užívání</a></li>
             <li><a href="/privacy" className="hover:underline">Ochrana osobních údajů</a></li>
             <li><a href="/faq" className="hover:underline">FAQ</a></li>
-            <li><a href="/careers" className="hover:underline">Kariéra</a></li>
           </ul>
         </div>
 
@@ -43,22 +42,6 @@ export default function Footer() {
               <i className="fab fa-linkedin-in"></i>
             </a>
           </div>
-          <div className="mt-6">
-            <h3 className="font-semibold mb-4">Přihlášení k newsletteru</h3>
-            <form>
-              <input
-                type="email"
-                placeholder="Váš e-mail"
-                className="px-4 py-2 w-full bg-gray-800 text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded"
-              />
-              <button
-                type="submit"
-                className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded"
-              >
-                Přihlásit se
-              </button>
-            </form>
-          </div>
         </div>
 
         {/* Platební metody a další odkazy */}
@@ -68,14 +51,6 @@ export default function Footer() {
             <img src="/visa.png" alt="Visa" className="h-8" />
             <img src="/mastercard.png" alt="MasterCard" className="h-8" />
             <img src="/paypal.png" alt="PayPal" className="h-8" />
-          </div>
-          <div className="mt-6">
-            <h3 className="font-semibold mb-4">Další odkazy</h3>
-            <ul className="space-y-2">
-              <li><a href="/sitemap" className="hover:underline">Mapa webu</a></li>
-              <li><a href="/certificates" className="hover:underline">Certifikace a ocenění</a></li>
-              <li><a href="/reviews" className="hover:underline">Reference</a></li>
-            </ul>
           </div>
         </div>
       </div>
