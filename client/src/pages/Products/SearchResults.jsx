@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Box from "./Box";
 import NotFound from "./NotFound.png"
+import { SERVER_URL } from "../../constants";
 
 export default function SearchResults() {
   const [books, setBooks] = useState([]);
@@ -13,7 +14,7 @@ export default function SearchResults() {
     const fetchBooks = async () => {
       try {
         const res = await fetch(
-          `http://localhost:3000/book/search/name?name=${query}`,
+          `${SERVER_URL}/book/search/name?name=${query}`,
           {
             headers: {
               Accept: "application/json",

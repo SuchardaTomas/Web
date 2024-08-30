@@ -1,5 +1,6 @@
 import Box from "./Box";
 import { useState, useEffect } from "react";
+import { SERVER_URL } from "../../constants";
 
 export default function Products() {
   const [books, setBooks] = useState([]);
@@ -11,7 +12,7 @@ export default function Products() {
   };
 
   const getBooks = async () => {
-    const res = await fetch("http://localhost:3000/book", {
+    const res = await fetch(`${SERVER_URL}/book`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

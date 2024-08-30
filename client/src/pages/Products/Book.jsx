@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { SERVER_URL } from "../../constants";
 
 export default function Book() {
   const { id, name } = useParams();
@@ -7,7 +8,7 @@ export default function Book() {
   const [loaded, setLoaded] = useState(false);
 
   const getBook = async () => {
-    const res = await fetch(`http://localhost:3000/book/${name}/${id}`, {
+    const res = await fetch(`${SERVER_URL}/book/${name}/${id}`, {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
