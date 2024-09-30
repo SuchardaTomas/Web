@@ -50,7 +50,7 @@ exports.getBookByNameAndId = (req, res) => {
 exports.getBooksByName = (req, res) => {
   const searchString = `%${req.query.name}%`; 
   db.query(
-    "SELECT * FROM books WHERE name LIKE $1",
+    "SELECT * FROM books WHERE name ILIKE $1",
     [searchString],
     (err, result) => {
       if (err) {
