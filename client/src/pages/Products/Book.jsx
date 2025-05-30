@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../Cart/CartItems"; 
 import { SERVER_URL } from "../../constants";
 
 export default function Book() {
   const { id, name } = useParams();
   const [book, setBook] = useState({});
   const [loaded, setLoaded] = useState(false);
+
+  const dispatch = useDispatch();
 
   const getBook = async () => {
     const res = await fetch(`${SERVER_URL}/book/${name}/${id}`, {
@@ -22,8 +26,18 @@ export default function Book() {
 
   useEffect(() => {
     getBook();
-    console.log(book.result);
   }, []);
+
+  const handleAddToCart = () => {
+    if (!loaded) return; // bezpečnostní kontrola, jestli už data máme
+
+    dispatch(
+      addToCart({
+        productId: book.result[0].id, // nebo _id, podle struktury dat
+        quantity: 1,
+      })
+    );
+  };
 
   if (!loaded)
     return (
@@ -40,7 +54,7 @@ export default function Book() {
             <div className="columns is-vcentered">
               <div className="column is-4">
                 <figure className="image is-2by3">
-                  <img src={book.result[0].image} alt="Description" />
+                  <img src={book.result[0].image} alt={book.result[0].name} />
                 </figure>
               </div>
               <div className="column is-6 is-offset-1">
@@ -48,9 +62,9 @@ export default function Book() {
                 <h2 className="subtitle is-4">{book.result[0].author}</h2>
                 <br />
                 <button
-                  type="submit"
+                  type="button"
                   className="btn btn-warning my-3 btn-lg"
-                  name="add"
+                  onClick={handleAddToCart}
                 >
                   Koupit
                 </button>

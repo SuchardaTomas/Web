@@ -41,6 +41,7 @@ export default function Products() {
         <div className="row text-center py-6">
           {books.result.slice(0, visible).map((book) => (
             <Box
+              key={book.id}
               id={book.id}
               name={book.name}
               author={book.author}
@@ -50,7 +51,10 @@ export default function Products() {
           ))}
         </div>
         {visible < books.result.length && (
-          <button className="btn btn-warning my-3 btn-lg" onClick={showMoreBooks}>
+          <button
+            className="btn btn-warning my-3 btn-lg"
+            onClick={showMoreBooks}
+          >
             Načíst další...
           </button>
         )}

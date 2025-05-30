@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Box from "./Box";
-import NotFound from "./NotFound.png"
+import NotFound from "./NotFound.png";
 import { SERVER_URL } from "../../constants";
 
 export default function SearchResults() {
   const [books, setBooks] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const location = useLocation();
-  
+
   const query = new URLSearchParams(location.search).get("q");
 
   useEffect(() => {

@@ -1,13 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { NavbarData } from "./NavbarData";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const [query, setQuery] = useState("");
   const [isSideNavOpen, setIsSideNavOpen] = useState(false);
-  const [cartItemCount, setCartItemCount] = useState(0); // počet produktů v košíku
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  const carts = useSelector((store) => store.cart.items);
+  
+  useEffect(() => {
+    let total = 0;
+    carts.forEach((item) => {
+      const quantity = Number(item.quantity); 
+      if (!isNaN(quantity)) {
+        total += quantity;
+      }
+    });
+    setCartItemCount(total);
+  }, [carts]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -41,7 +55,10 @@ export default function Navbar() {
           </button>
         </div>
         <div className="flex items-center ml-auto space-x-4">
-          <div className="flex items-center border border-gray-300 rounded-md" style={{ width: '250px' }}>
+          <div
+            className="flex items-center border border-gray-300 rounded-md"
+            style={{ width: "250px" }}
+          >
             <input
               className="p-2 rounded-l-md focus:outline-none w-full"
               type="text"
@@ -60,7 +77,7 @@ export default function Navbar() {
             </button>
           </div>
           <div className="relative">
-            <Link to="/cart" className="text-black flex items-center">
+            <Link to="/nakup" className="text-black flex items-center">
               <FontAwesomeIcon icon={faCartShopping} className="w-6 h-6" />
               <span className="absolute -top-3 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
                 {cartItemCount}
